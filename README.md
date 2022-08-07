@@ -93,3 +93,64 @@ Regular users can open and close their own issues, but only the administrators c
 Marlin is published under the [GPL license](/LICENSE) because we believe in open development. The GPL comes with both rights and obligations. Whether you use Marlin firmware as the driver for your open or closed-source product, you must keep Marlin open, and you must provide your compatible Marlin source code to end users upon request. The most straightforward way to comply with the Marlin license is to make a fork of Marlin on Github, perform your modifications, and direct users to your modified fork.
 
 While we can't prevent the use of this code in products (3D printers, CNC, etc.) that are closed source or crippled by a patent, we would prefer that you choose another firmware or, better yet, make your own.
+
+# Cubic8 Notes
+
+## Links
+
+* [Polargraph Wiki](https://github.com/euphy/polargraph/wiki) 
+  Has page on using [RAMPS](https://github.com/euphy/polargraph/wiki/Using-the-Polargraph-software-with-RAMPS-motorshield)
+  Lot of trouble shooting info...
+
+* [Must put in link to get Servo working with RAMPS](https://reprap.org/forum/read.php?219,256377)
+
+* [Drawing path Optimiser](https://github.com/ezheidtmann/polargraph-optimizer)
+
+* [Interactive Programmable Arts Display](https://github.com/zanedrys/IPAD)
+
+* [Polargraph](http://www.polargraph.co.uk/)
+
+* [Polarshield](https://github.com/euphy/polargraph_server_polarshield)
+
+* [Marlin](https://github.com/MarlinFirmware/Marlin)
+
+* [Polargraph with Marlin](https://www.marginallyclever.com/2021/10/friday-facts-4-how-to-marlin-polargraph/)
+
+* [Makelangelo vs PolarGraph](https://www.marginallyclever.com/2015/08/makelangelo-vs-polargraph/)
+
+* [GCode Reference](https://marlinfw.org/meta/gcode/)
+
+## Hardware
+
+Use Makelangelo - uses GCODE (PolarGrapg uses custom)
+
+We have:
+  - Mega 2560
+  - RAMPS 1.4
+  - A4988 Drivers
+  - LCD (+SD)
+
+[for example](https://www.makerstore.com.au/product/elec-3d-ramps1-4-control-pack/)
+
+Use [this diagram](https://www.reprap.org/mediawiki/images/0/06/RAMPS_dossier.pdf) to remove items we dont need
+eg.
+  - extruder
+  - thermisters
+  - heatbed
+  - hotend
+
+* [My fork of Marlin](https://github.com/cubic8/Marlin-polargraph)
+
+
+Use:
+
+  X - Stepper
+  Y - Stepper
+  Servo - Penup/down
+
+Need end stops on X/Y belts, when full pulled in (gondola at lowest)
+Place in motor mount when weight reaches top
+
+## Other info
+
+Use M280 to lift pen (generic servo command)
