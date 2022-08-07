@@ -120,6 +120,8 @@ While we can't prevent the use of this code in products (3D printers, CNC, etc.)
 
 * [GCode Reference](https://marlinfw.org/meta/gcode/)
 
+* [Makelegelo Forum](https://www.marginallyclever.com/learn/forum/forum/makelangelo-polargraph-art-robot/)
+
 ## Hardware
 
 Use Makelangelo - uses GCODE (PolarGrapg uses custom)
@@ -154,3 +156,14 @@ Place in motor mount when weight reaches top
 ## Other info
 
 Use M280 to lift pen (generic servo command)
+
+## To Compile
+
+* Open VSCode
+* Install Marlin extension (will add PIO IDE too - which incudes PIO core)
+* Create workspace and include this folder
+* Update Configuration.h as required
+* Choose environment on bottom PIO toolbar: ie. env:mega2560
+* Build: Click tick on PIO toolbar
+* Ensure USB is conencted to hardware (Note I had instelled Arduino IDE previously so USB drivers were present - you may have to sort this out first)
+* Upload: Click the 'Right Arrow' icon on the PIO toolbar
