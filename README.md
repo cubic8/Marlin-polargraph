@@ -101,26 +101,17 @@ While we can't prevent the use of this code in products (3D printers, CNC, etc.)
 * [Polargraph Wiki](https://github.com/euphy/polargraph/wiki) 
   Has page on using [RAMPS](https://github.com/euphy/polargraph/wiki/Using-the-Polargraph-software-with-RAMPS-motorshield)
   Lot of trouble shooting info...
-
 * [Must put in link to get Servo working with RAMPS](https://reprap.org/forum/read.php?219,256377)
-
 * [Drawing path Optimiser](https://github.com/ezheidtmann/polargraph-optimizer)
-
 * [Interactive Programmable Arts Display](https://github.com/zanedrys/IPAD)
-
 * [Polargraph](http://www.polargraph.co.uk/)
-
 * [Polarshield](https://github.com/euphy/polargraph_server_polarshield)
-
 * [Marlin](https://github.com/MarlinFirmware/Marlin)
-
 * [Polargraph with Marlin](https://www.marginallyclever.com/2021/10/friday-facts-4-how-to-marlin-polargraph/)
-
 * [Makelangelo vs PolarGraph](https://www.marginallyclever.com/2015/08/makelangelo-vs-polargraph/)
-
 * [GCode Reference](https://marlinfw.org/meta/gcode/)
-
 * [Makelegelo Forum](https://www.marginallyclever.com/learn/forum/forum/makelangelo-polargraph-art-robot/)
+* [RAMPS 1.4 Scematic](https://image.easyeda.com/histories/ad8f3a93aeea4a328dcac2b85ed77d09.png)
 
 ## Hardware
 
@@ -167,3 +158,12 @@ Use M280 to lift pen (generic servo command)
 * Build: Click tick on PIO toolbar
 * Ensure USB is conencted to hardware (Note I had instelled Arduino IDE previously so USB drivers were present - you may have to sort this out first)
 * Upload: Click the 'Right Arrow' icon on the PIO toolbar
+* Serial Port Monitor: Click on the plug icon on the PIO toolbar
+
+# GCODE Helpers
+
+* M280 P0             - Show servo 0 position
+* M280 P0 S100        - Set servo 0 position
+* M43                 - Show pins/ports used
+* M43 E1              - Watch Endstops
+* G28                 - Home all axis
