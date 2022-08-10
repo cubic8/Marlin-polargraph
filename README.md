@@ -164,6 +164,10 @@ Use M280 to lift pen (generic servo command)
 
 * M280 P0             - Show servo 0 position
 * M280 P0 S100        - Set servo 0 position
+      Use pen retracted -> M280 P0 S20
+         Use pen active -> M280 P0 S200
+
 * M43                 - Show pins/ports used
-* M43 E1              - Watch Endstops
+* M43 E1              - Watch Endstops - list changes as they occur
 * G28                 - Home all axis
+* M300 P200           - Beep for 500ms
