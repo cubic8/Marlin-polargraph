@@ -831,8 +831,8 @@
 // Enable for Polargraph Kinematics
 #define POLARGRAPH
 #if ENABLED(POLARGRAPH)
-  #define POLARGRAPH_MAX_BELT_LEN 1035.0
-  #define POLAR_SEGMENTS_PER_SECOND 5
+  #define POLARGRAPH_MAX_BELT_LEN 1035.0    // SJSG - TODO
+  #define POLAR_SEGMENTS_PER_SECOND 5       // SJSG - TODO
 #endif
 
 // Enable for DELTA kinematics and configure below
@@ -1084,14 +1084,14 @@
  * Override with M92
  *                                      X, Y, Z [, I [, J [, K]]], E0 [, E1[, E2...]]
  */
-#define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 80 }
+#define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 80 }     // SJSG - TODO
 
 /**
  * Default Max Feed Rate (mm/s)
  * Override with M203
  *                                      X, Y, Z [, I [, J [, K]]], E0 [, E1[, E2...]]
  */
-#define DEFAULT_MAX_FEEDRATE          { 90*60, 90*60, 90*60 }
+#define DEFAULT_MAX_FEEDRATE          { 90*60, 90*60, 90*60 }     // SJSG - TODO
 
 //#define LIMITED_MAX_FR_EDITING        // Limit edit via M203 or LCD to DEFAULT_MAX_FEEDRATE * 2
 #if ENABLED(LIMITED_MAX_FR_EDITING)
@@ -1104,7 +1104,7 @@
  * Override with M201
  *                                      X, Y, Z [, I [, J [, K]]], E0 [, E1[, E2...]]
  */
-#define DEFAULT_MAX_ACCELERATION      { 40*60, 40*60, 50*60 }
+#define DEFAULT_MAX_ACCELERATION      { 40*60, 40*60, 50*60 }     // SJSG - TODO
 
 //#define LIMITED_MAX_ACCEL_EDITING     // Limit edit via M201 or LCD to DEFAULT_MAX_ACCELERATION * 2
 #if ENABLED(LIMITED_MAX_ACCEL_EDITING)
@@ -1526,8 +1526,8 @@
 // @section machine
 
 // Invert the stepper direction. Change (or reverse the motor connector) if an axis goes the wrong way.
-#define INVERT_X_DIR true
-#define INVERT_Y_DIR true
+#define INVERT_X_DIR true   // SJSG - TODO
+#define INVERT_Y_DIR true   // SJSG - TODO
 #define INVERT_Z_DIR false
 //#define INVERT_I_DIR false
 //#define INVERT_J_DIR false
@@ -1564,8 +1564,8 @@
 
 // Direction of endstops when homing; 1=MAX, -1=MIN
 // :[-1,1]
-#define X_HOME_DIR 1
-#define Y_HOME_DIR 1
+#define X_HOME_DIR 1   // SJSG - TODO
+#define Y_HOME_DIR 1   // SJSG - TODO
 #define Z_HOME_DIR 1
 //#define I_HOME_DIR -1
 //#define J_HOME_DIR -1
@@ -1574,8 +1574,8 @@
 // @section machine
 
 // The size of the printable area.  Must be a whole number.  Cannot be an odd number.
-#define X_BED_SIZE 650
-#define Y_BED_SIZE 1000
+#define X_BED_SIZE 650    // SJSG - TODO
+#define Y_BED_SIZE 1000   // SJSG - TODO
 
 // Travel limits (mm) after homing, corresponding to endstop positions.
 #define X_MIN_POS (-X_BED_SIZE/2)
@@ -1931,6 +1931,7 @@
 // MANUAL_X_HOME_POS must be within the range X_MAX_POS...X_MIN_POS.
 #define MANUAL_X_HOME_POS 0
 // MANUAL_Y_HOME_POS must be within the range Y_MAX_POS...Y_MIN_POS.
+// SJSG - TODO
 #define MANUAL_Y_HOME_POS -482.65 //(Y_MAX_POS-( sqrt(sq(POLARGRAPH_MAX_BELT_LEN)-sq(X_BED_SIZE/2))))
 //#define MANUAL_Z_HOME_POS 0
 //#define MANUAL_I_HOME_POS 0
@@ -2029,7 +2030,7 @@
  *   M501 - Read settings from EEPROM. (i.e., Throw away unsaved changes)
  *   M502 - Revert settings to "factory" defaults. (Follow with M500 to init the EEPROM.)
  */
-#define EEPROM_SETTINGS     // Persistent storage with M500 and M501
+#define EEPROM_SETTINGS       // Persistent storage with M500 and M501
 //#define DISABLE_M503        // Saves ~2700 bytes of flash. Disable for release!
 #define EEPROM_CHITCHAT       // Give feedback on EEPROM commands. Disable to save PROGMEM.
 #define EEPROM_BOOT_SILENT    // Keep M503 quiet and only give errors during first load
