@@ -831,8 +831,8 @@
 // Enable for Polargraph Kinematics
 #define POLARGRAPH
 #if ENABLED(POLARGRAPH)
-  #define POLARGRAPH_MAX_BELT_LEN 1035.0    // SJSG - TODO
-  #define POLAR_SEGMENTS_PER_SECOND 5       // SJSG - TODO
+  #define POLARGRAPH_MAX_BELT_LEN 1250.0    // SJSG - Measured for lowest wanted pos (I have very long belts)
+  #define POLAR_SEGMENTS_PER_SECOND 5       // SJSG - ?
 #endif
 
 // Enable for DELTA kinematics and configure below
@@ -1526,8 +1526,8 @@
 // @section machine
 
 // Invert the stepper direction. Change (or reverse the motor connector) if an axis goes the wrong way.
-#define INVERT_X_DIR true   // SJSG - TODO
-#define INVERT_Y_DIR true   // SJSG - TODO
+#define INVERT_X_DIR true   // SJSG - ok
+#define INVERT_Y_DIR false  // SJSG - ok
 #define INVERT_Z_DIR false
 //#define INVERT_I_DIR false
 //#define INVERT_J_DIR false
@@ -1574,15 +1574,15 @@
 // @section machine
 
 // The size of the printable area.  Must be a whole number.  Cannot be an odd number.
-#define X_BED_SIZE 650    // SJSG - TODO
-#define Y_BED_SIZE 1000   // SJSG - TODO
+#define X_BED_SIZE 1000   // SJSG - Height of draw area (make sure we dont hit floor)
+#define Y_BED_SIZE 1156   // SJSG - Width between motor shafts (MUST BE AN EVEN NUMBER ELSE YOU GET ERRORS ON COMPILE)
 
 // Travel limits (mm) after homing, corresponding to endstop positions.
 #define X_MIN_POS (-X_BED_SIZE/2)
-#define Y_MIN_POS (-Y_BED_SIZE/2)
+#define Y_MIN_POS (-Y_BED_SIZE/2)   // SJSG is this right? Think should be 0
 #define Z_MIN_POS 0
 #define X_MAX_POS (X_BED_SIZE/2)
-#define Y_MAX_POS (Y_BED_SIZE/2)
+#define Y_MAX_POS (Y_BED_SIZE/2)    // SJSG is this right? Think should be Y_BED_SIZE
 #define Z_MAX_POS 200
 //#define I_MIN_POS 0
 //#define I_MAX_POS 50
@@ -1932,7 +1932,19 @@
 #define MANUAL_X_HOME_POS 0
 // MANUAL_Y_HOME_POS must be within the range Y_MAX_POS...Y_MIN_POS.
 // SJSG - TODO
-#define MANUAL_Y_HOME_POS -482.65 //(Y_MAX_POS-( sqrt(sq(POLARGRAPH_MAX_BELT_LEN)-sq(X_BED_SIZE/2))))
+#define MANUAL_Y_HOME_POS -570.945 //(Y_MAX_POS-( sqrt(sq(POLARGRAPH_MAX_BELT_LEN)-sq(X_BED_SIZE/2))))
+/* Calc:
+  X_BED_SIZE = 1000
+  Y_BED_SIZE = 1157
+  Y_MAX_POS = (Y_BED_SIZE/2)  = 578.5
+  POLARGRAPH_MAX_BELT_LEN 1035.0
+
+ 578.5 - sqrt(1035.0*1035.0 - 500*500)
+ 578.5 - sqrt(1321225)
+ 578.5 - 1149.445518500116 = -570.945
+*/ 
+
+
 //#define MANUAL_Z_HOME_POS 0
 //#define MANUAL_I_HOME_POS 0
 //#define MANUAL_J_HOME_POS 0

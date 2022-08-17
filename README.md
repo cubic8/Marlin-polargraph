@@ -166,8 +166,14 @@ Use M280 to lift pen (generic servo command)
 * M280 P0 S100        - Set servo 0 position
       Use pen retracted -> M280 P0 S20
          Use pen active -> M280 P0 S200
-
+* M114                - Show current positions
 * M43                 - Show pins/ports used
 * M43 E1              - Watch Endstops - list changes as they occur
 * G28                 - Home all axis
-* M300 P200           - Beep for 500ms
+* M300 P200           - Beep for 200ms
+* G21                 - Use mm
+* G90                 - Absolute positions
+* G91                 - Relative positions
+* G0 Xnnn Ynnn Fxxxx  - Non-draw move (fast)
+* G1 Xnnn Ynnn Fxxxx  - Draw move (controlled)
+* M928 log.txt        - Log to file on SD card (se M29 to stop)
