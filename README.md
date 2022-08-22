@@ -168,6 +168,7 @@ Use M280 to lift pen (generic servo command)
 * M43                 - Show pins/ports used
 * M43 E1              - Watch Endstops - list changes as they occur
 * M928 log.txt        - Log to file on SD card (se M29 to stop)
+* M211                - Report/Enable software endstops (eg for Z ?)
 
 ## Typical file commands
 * G28                 - Home all axis
