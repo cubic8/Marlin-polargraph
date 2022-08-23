@@ -182,3 +182,15 @@ Use M280 to lift pen (generic servo command)
 * M280 P0 S100        - Set servo 0 position
       Use pen retracted -> M280 P0 S20
          Use pen active -> M280 P0 S200
+
+
+# Tests
+M111 S255
+M211
+M114
+G28
+M114
+M211
+G90
+G0 Y20.00
+G0 Y-20.00
