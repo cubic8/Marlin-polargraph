@@ -831,8 +831,8 @@
 // Enable for Polargraph Kinematics
 #define POLARGRAPH
 #if ENABLED(POLARGRAPH)
-  #define POLARGRAPH_MAX_BELT_LEN 1250.0    // SJSG - Measured for lowest wanted pos (I have very long belts)
-  #define POLAR_SEGMENTS_PER_SECOND 5       // SJSG - ?
+  #define POLARGRAPH_MAX_BELT_LEN 1250.0    // Measured for lowest wanted pos
+  #define POLAR_SEGMENTS_PER_SECOND 5       // ?
 #endif
 
 // Enable for DELTA kinematics and configure below
@@ -1054,7 +1054,7 @@
  *
  * :[2,3,4,5,6,7]
  */
-#define ENDSTOP_NOISE_THRESHOLD 2    // SJSG  - Try it
+// #define ENDSTOP_NOISE_THRESHOLD 2 
 
 // Check for stuck or disconnected endstops during homing moves.
 //#define DETECT_BROKEN_ENDSTOP
@@ -1084,14 +1084,14 @@
  * Override with M92
  *                                      X, Y, Z [, I [, J [, K]]], E0 [, E1[, E2...]]
  */
-#define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 80 }     // SJSG - TODO
+#define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 80 }     // TODO
 
 /**
  * Default Max Feed Rate (mm/s)
  * Override with M203
  *                                      X, Y, Z [, I [, J [, K]]], E0 [, E1[, E2...]]
  */
-#define DEFAULT_MAX_FEEDRATE          { 90*60, 90*60, 90*60 }     // SJSG - TODO
+#define DEFAULT_MAX_FEEDRATE          { 90*60, 90*60, 90*60 }     //  TODO
 
 //#define LIMITED_MAX_FR_EDITING        // Limit edit via M203 or LCD to DEFAULT_MAX_FEEDRATE * 2
 #if ENABLED(LIMITED_MAX_FR_EDITING)
@@ -1104,7 +1104,7 @@
  * Override with M201
  *                                      X, Y, Z [, I [, J [, K]]], E0 [, E1[, E2...]]
  */
-#define DEFAULT_MAX_ACCELERATION      { 40*60, 40*60, 50*60 }     // SJSG - TODO
+#define DEFAULT_MAX_ACCELERATION      { 40*60, 40*60, 50*60 }     // TODO
 
 //#define LIMITED_MAX_ACCEL_EDITING     // Limit edit via M201 or LCD to DEFAULT_MAX_ACCELERATION * 2
 #if ENABLED(LIMITED_MAX_ACCEL_EDITING)
@@ -1526,8 +1526,8 @@
 // @section machine
 
 // Invert the stepper direction. Change (or reverse the motor connector) if an axis goes the wrong way.
-#define INVERT_X_DIR true   // SJSG - ok
-#define INVERT_Y_DIR false  // SJSG - ok
+#define INVERT_X_DIR true   // ok
+#define INVERT_Y_DIR false  // ok
 #define INVERT_Z_DIR false
 //#define INVERT_I_DIR false
 //#define INVERT_J_DIR false
@@ -1564,8 +1564,8 @@
 
 // Direction of endstops when homing; 1=MAX, -1=MIN
 // :[-1,1]
-#define X_HOME_DIR 1   // SJSG - TODO
-#define Y_HOME_DIR 1   // SJSG - TODO
+#define X_HOME_DIR 1
+#define Y_HOME_DIR 1
 #define Z_HOME_DIR 1
 //#define I_HOME_DIR -1
 //#define J_HOME_DIR -1
@@ -1574,15 +1574,15 @@
 // @section machine
 
 // The size of the printable area.  Must be a whole number.  Cannot be an odd number.
-#define X_BED_SIZE 1156   // SJSG - Width between motor shafts (MUST BE AN EVEN NUMBER ELSE YOU GET ERRORS ON COMPILE)
-#define Y_BED_SIZE 1000   // SJSG - Height of draw area (make sure we dont hit floor)
+#define X_BED_SIZE 1156   // Width between motor shafts (MUST BE AN EVEN NUMBER ELSE YOU GET ERRORS ON COMPILE)
+#define Y_BED_SIZE 1000   // Height of draw area (make sure we dont hit floor)
 
 // Travel limits (mm) after homing, corresponding to endstop positions.
 #define X_MIN_POS (-X_BED_SIZE/2)
-#define Y_MIN_POS (-Y_BED_SIZE/2)   // SJSG is this right? Think should be 0
+#define Y_MIN_POS (-Y_BED_SIZE/2)
 #define Z_MIN_POS 0
 #define X_MAX_POS (X_BED_SIZE/2)
-#define Y_MAX_POS (Y_BED_SIZE/2)    // SJSG is this right? Think should be Y_BED_SIZE
+#define Y_MAX_POS (Y_BED_SIZE/2)
 #define Z_MAX_POS 200
 //#define I_MIN_POS 0
 //#define I_MAX_POS 50
@@ -1931,15 +1931,14 @@
 // MANUAL_X_HOME_POS must be within the range X_MAX_POS...X_MIN_POS.
 #define MANUAL_X_HOME_POS 0
 // MANUAL_Y_HOME_POS must be within the range Y_MAX_POS...Y_MIN_POS.
-// SJSG - TODO
-#define MANUAL_Y_HOME_POS -358.57 //(Y_MAX_POS-( sqrt(sq(POLARGRAPH_MAX_BELT_LEN)-sq(X_BED_SIZE/2))))
+#define MANUAL_Y_HOME_POS -500.0 //(Y_MAX_POS-( sqrt(sq(POLARGRAPH_MAX_BELT_LEN)-sq(X_BED_SIZE/2))))
 /* Calc:
   X_BED_SIZE = 1156
   Y_BED_SIZE = 1000
   Y_MAX_POS = (Y_BED_SIZE/2)  = 500.0
-  POLARGRAPH_MAX_BELT_LEN 1035.0
+  POLARGRAPH_MAX_BELT_LEN = 1250.0
 
- 500.0 - sqrt(1035.0*1035.0 - 578*578) = -358.57
+ 500.0 - sqrt(1156.0*1156.0 - 578*578) = -501.12   ?? Can't be > 500.0
 
 */ 
 
