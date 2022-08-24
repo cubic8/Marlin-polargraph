@@ -1574,8 +1574,8 @@
 // @section machine
 
 // The size of the printable area.  Must be a whole number.  Cannot be an odd number.
-#define X_BED_SIZE 1000   // SJSG - Height of draw area (make sure we dont hit floor)
-#define Y_BED_SIZE 1156   // SJSG - Width between motor shafts (MUST BE AN EVEN NUMBER ELSE YOU GET ERRORS ON COMPILE)
+#define X_BED_SIZE 1156   // SJSG - Width between motor shafts (MUST BE AN EVEN NUMBER ELSE YOU GET ERRORS ON COMPILE)
+#define Y_BED_SIZE 1000   // SJSG - Height of draw area (make sure we dont hit floor)
 
 // Travel limits (mm) after homing, corresponding to endstop positions.
 #define X_MIN_POS (-X_BED_SIZE/2)
@@ -1932,16 +1932,15 @@
 #define MANUAL_X_HOME_POS 0
 // MANUAL_Y_HOME_POS must be within the range Y_MAX_POS...Y_MIN_POS.
 // SJSG - TODO
-#define MANUAL_Y_HOME_POS -570.945 //(Y_MAX_POS-( sqrt(sq(POLARGRAPH_MAX_BELT_LEN)-sq(X_BED_SIZE/2))))
+#define MANUAL_Y_HOME_POS -358.57 //(Y_MAX_POS-( sqrt(sq(POLARGRAPH_MAX_BELT_LEN)-sq(X_BED_SIZE/2))))
 /* Calc:
-  X_BED_SIZE = 1000
-  Y_BED_SIZE = 1157
-  Y_MAX_POS = (Y_BED_SIZE/2)  = 578.5
+  X_BED_SIZE = 1156
+  Y_BED_SIZE = 1000
+  Y_MAX_POS = (Y_BED_SIZE/2)  = 500.0
   POLARGRAPH_MAX_BELT_LEN 1035.0
 
- 578.5 - sqrt(1035.0*1035.0 - 500*500)
- 578.5 - sqrt(1321225)
- 578.5 - 1149.445518500116 = -570.945
+ 500.0 - sqrt(1035.0*1035.0 - 578*578) = -358.57
+
 */ 
 
 
