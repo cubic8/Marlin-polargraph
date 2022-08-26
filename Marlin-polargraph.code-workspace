@@ -3,6 +3,9 @@
 		{
 			"name": "Marlin-polargraph",
 			"path": "."
+		},
+		{
+			"path": "..\\GCode"
 		}
 	],
 	"settings": {}

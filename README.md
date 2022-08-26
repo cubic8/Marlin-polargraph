@@ -182,7 +182,7 @@ Use M280 to lift pen (generic servo command)
 * M280 P0 S100        - Set servo 0 position
       Use pen retracted -> M280 P0 S20
          Use pen active -> M280 P0 S200
-* M665                - Reaad/set polargraph settings
+* M665                - Read/set polargraph settings in EEPROM
 
 
 # Tests
