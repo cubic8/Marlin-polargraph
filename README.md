@@ -199,3 +199,46 @@ G0 X200.00 Y-300.00
 G90
 G0 Y20.00
 G0 Y-20.00
+
+
+
+## Discord help
+
+Hi, I wonder if anybody can help. I've made a polargraph from the parts from an old rep-rap 3d printer, plus some custom 3d printed parts + perspex. I've got a RAMPS 1.4 as the interface board.
+
+Its come together nicely (see pic), and I believe the hardware is mostly ok (yet to check penlift servo)
+
+I've configured Marlin, using the guide at https://www.marginallyclever.com/2021/10/friday-facts-4-how-to-marlin-polargraph/
+I'm trying to do some basic tests, by manually sending GCodes (via VSCode/PlatformIO serial terminal).
+
+If I send 'G28' it homes to the lowest point (both motors and end-stops are working). The LCD and M114 say the position is X=0, Y=-500, which is what I expect.
+
+But now if I send any move G0/G1 eg. 'G0 X20.0 Y-400.0', regardless of the coords I give, it moves directly up, and now reports position X=0 Y=0. Any further move commands do not cause any movement (and there are no messages shown in terminal - even 'M111 S255' - max debug msgs). Only another G28 seems to cause further movement...
+
+
+
+
+Any suggestions? I've attached my configuration.h
+
+--------------------------------------
+
+I've had a go at fixing my issue - As @i-make-robots suggested, I tried clearing the EEPROM - same result. Then I commented out EEPROM_SETTINGS to remove this completely from the question - same result, just moves to (0,0)
+
+To check settings I did a M665 which gives: 
+   M665 S5.00 L-578.00 R578.00 T500.00 B-500.00 H1528.51
+Which I think looks ok (I'm assuming these are segments-per-sec/left/right/top/bottom/hypotanuse values)
+
+So then digging in the code, to check out inverse_kinematics(), I put in a whole load of SERIAL_ECHO's to see what happens when I move. This seems to be ok tbh - the issue is that the 'raw' value passed in is moving towards (0,0) on any move.
+
+Tracing back further I ended up in 'prepare_line_to_destination()' (in motion.cpp) which starts off with my expected destination, but was being forced to (0,0) by the call to 'apply_motion_limits()'
+
+In apply_motion_limits(), the problem code is: 
+```
+  if (dist_2 > delta_max_radius_2)
+    target *= float(delta_max_radius / SQRT(dist_2)); 
+```
+The issue is that *delta_max_radius_2* is never set (for POLARGRAPH - it is for DELTA & SCARA) so is always zero. So the target is multiplied by zero, giving zero regardless of the request.
+
+I'm using the code at https://github.com/MarginallyClever/Marlin-polargraph (from a couple of weeks ago) - I'm confused how this works for everybody else!
+
+---------------------------------------
