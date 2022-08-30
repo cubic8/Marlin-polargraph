@@ -831,7 +831,7 @@
 // Enable for Polargraph Kinematics
 #define POLARGRAPH
 #if ENABLED(POLARGRAPH)
-  #define POLARGRAPH_MAX_BELT_LEN 1250.0    // Measured for lowest wanted pos
+  #define POLARGRAPH_MAX_BELT_LEN 1100.0    // Measured for lowest wanted pos
   #define POLAR_SEGMENTS_PER_SECOND 5       // ?
 #endif
 
@@ -1085,6 +1085,16 @@
  *                                      X, Y, Z [, I [, J [, K]]], E0 [, E1[, E2...]]
  */
 #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 80 }     // TODO
+
+/*
+  GT2 Pulley has 20 teeth
+  1/16 microstepping
+  200 steps per turn
+  80 = (200*16) / (20 * 2)
+
+*/
+
+
 
 /**
  * Default Max Feed Rate (mm/s)
@@ -1574,8 +1584,14 @@
 // @section machine
 
 // The size of the printable area.  Must be a whole number.  Cannot be an odd number.
-#define X_BED_SIZE 1156   // Width between motor shafts (MUST BE AN EVEN NUMBER ELSE YOU GET ERRORS ON COMPILE)
-#define Y_BED_SIZE 1000   // Height of draw area (make sure we dont hit floor)
+#define X_BED_SIZE 1150   // Width between motor shafts (MUST BE AN EVEN NUMBER ELSE YOU GET ERRORS ON COMPILE)
+#define Y_BED_SIZE  936   // Height of draw area (make sure we dont hit floor)
+
+// See https://www.marginallyclever.com/2014/10/how-to-fix-9-common-polargraph-drawing-problems/
+// I worked out these numbers by experimentation:
+// X size set to width between motors
+// For Y size - draw a 10 cm square and measure the width and height.
+// Re-adjust Y until you get a perfect square!
 
 // Travel limits (mm) after homing, corresponding to endstop positions.
 #define X_MIN_POS (-X_BED_SIZE/2)
@@ -1931,14 +1947,14 @@
 // MANUAL_X_HOME_POS must be within the range X_MAX_POS...X_MIN_POS.
 #define MANUAL_X_HOME_POS 0
 // MANUAL_Y_HOME_POS must be within the range Y_MAX_POS...Y_MIN_POS.
-#define MANUAL_Y_HOME_POS -500.0 //(Y_MAX_POS-( sqrt(sq(POLARGRAPH_MAX_BELT_LEN)-sq(X_BED_SIZE/2))))
+#define MANUAL_Y_HOME_POS Y_MIN_POS //-400.0 //(Y_MAX_POS-( sqrt(sq(POLARGRAPH_MAX_BELT_LEN)-sq(X_BED_SIZE/2))))
 /* Calc:
-  X_BED_SIZE = 1156
-  Y_BED_SIZE = 1000
-  Y_MAX_POS = (Y_BED_SIZE/2)  = 500.0
-  POLARGRAPH_MAX_BELT_LEN = 1250.0
+  X_BED_SIZE = 1000
+  Y_BED_SIZE = 800
+  Y_MAX_POS = (Y_BED_SIZE/2)  = 400.0
+  POLARGRAPH_MAX_BELT_LEN = 1100.0
 
- 500.0 - sqrt(1156.0*1156.0 - 578*578) = -501.12   ?? Can't be > 500.0
+ 400.0 - sqrt(1100.0*1100.0 - 500*500) = -501.12   ?? Can't be > 500.0
 
 */ 
 

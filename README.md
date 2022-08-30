@@ -107,11 +107,18 @@ While we can't prevent the use of this code in products (3D printers, CNC, etc.)
 * [Polargraph](http://www.polargraph.co.uk/)
 * [Polarshield](https://github.com/euphy/polargraph_server_polarshield)
 * [Marlin](https://github.com/MarlinFirmware/Marlin)
-* [Polargraph with Marlin](https://www.marginallyclever.com/2021/10/friday-facts-4-how-to-marlin-polargraph/)
 * [Makelangelo vs PolarGraph](https://www.marginallyclever.com/2015/08/makelangelo-vs-polargraph/)
 * [GCode Reference](https://marlinfw.org/meta/gcode/)
 * [Makelegelo Forum](https://www.marginallyclever.com/learn/forum/forum/makelangelo-polargraph-art-robot/)
 * [RAMPS 1.4 Scematic](https://image.easyeda.com/histories/ad8f3a93aeea4a328dcac2b85ed77d09.png)
+* [SVG files to GCode - Python](https://pypi.org/project/svg-to-gcode/)
+* [SVG to GCode - Online](http://jscut.org/)
+* [SVG to GCode - Online(CNC)](https://www.cad2cnc.com/)
+* [SVG to GCode - Inkscape plugin](https://inkscape.org/~arpruss/%E2%98%85gcodeplot)
+
+**Important info**
+* [Polargraph with Marlin](https://www.marginallyclever.com/2021/10/friday-facts-4-how-to-marlin-polargraph/)
+* [How to fix common drawing issues](https://www.marginallyclever.com/2014/10/how-to-fix-9-common-polargraph-drawing-problems/)
 
 ## Hardware
 
